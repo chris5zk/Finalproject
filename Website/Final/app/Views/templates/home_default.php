@@ -20,7 +20,7 @@
                     <div class="sidebutton sideword">登入</div>
                     <div class="sidebutton sideword">註冊</div>
                     <div class="bottom" id="contentbox">
-                        HI
+                    <?= $this->renderSection('content') ?>
                     </div>
                 </div>
             </div>
