@@ -8,26 +8,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <body>
-        <div class="bottom">
-            <div class="left bottom" id="L">
-                <div class="title">
-                    <h1 id="header">中正大學碰碰版 CCU CAR ACCIDENT</h1>
+    <body class="bgcolor">
+       
+            <div class="left" id="leftblock">
+                <div class="header">
+                    <h1 id="title">中正大學碰碰版 CCU CAR ACCIDENT</h1>
                 </div>
-                <div class="bottom">
-                    <div class="sidebutton sideword">打卡</div>
-                    <div class="sidebutton sideword">查詢</div>
-                    <div class="sidebutton sideword">登入</div>
-                    <div class="sidebutton sideword">註冊</div>
-                    <div class="bottom" id="contentbox">
+                <div class="list left">
+                    <a class="sidebutton sideword">打卡</a>
+                    <a class="sidebutton sideword">查詢</a>
+                    <a class="sidebutton sideword" href="/LoginController/login">登入</a>
+                    <a class="sidebutton sideword" href="/LoginController/register">註冊</a>
+                    <a class="sidebutton sideword" href="/PostController/postpage">首頁</a>
+                </div>
+                <div class="left" id="contentbox">
                     <?= $this->renderSection('content') ?>
-                    </div>
                 </div>
             </div>
-            <div class="left rank bottom">
+
+            <div class="left" id="rightblock">
+                <div class="ranking">
                     <h1>車禍榜</h1>
+                </div>     
             </div>
-        </div>
+        
     </body>
 
 </html>

@@ -2,14 +2,11 @@
 <?= $this->section('content') ?>
 
 <head>
-    
+
 </head>
 
 <body>
-    
-    HI44444
-
+    <a href="#">HI</a>
 </body>
-
 
 <?= $this->endSection() ?>
