@@ -27,7 +27,6 @@ class LoginController extends BaseController
         echo $YN;
     }
 
-    
     public function compare()
     {
         $member=
