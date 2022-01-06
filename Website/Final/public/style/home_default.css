@@ -2,6 +2,10 @@ html,body{
     height: 100%;
 }
 
+.bgcolor{
+    background-color: rgb(243, 239, 233);
+} 
+
 .left{
     float: left;
 }
@@ -100,6 +104,11 @@ a.sidebutton:active{
         clear: none;
     }
 
+    .sideword{
+        font-size:150%;
+        font-family: fantasy;
+    }
+
     #contentbox{
         float: right;
         width: 100%;
@@ -113,6 +122,37 @@ a.sidebutton:active{
     }
 }
 
-.bgcolor{
-    background-color: rgb(243, 239, 233);
-} 
+@media screen and (max-width:400px) {
+    .sidebutton{
+        background-color: antiquewhite;
+        height: 75px;   
+        border-right: sienna solid;
+        margin: auto;
+        line-height: 75px;
+        text-align: center;
+        width: 24%;
+        float: left;
+        clear: none;
+    }
+
+    .sideword{
+        font-size:150%;
+        font-family: fantasy;
+    }
+
+    #contentbox{
+        float: right;
+        width: 100%;
+        height: 100%;
+    }
+
+    .list{
+        width: 100%;
+        height: auto;
+        border:sienna solid;
+    }
+
+    #home{
+        display: none;
+    }
+}
