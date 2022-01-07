@@ -14,13 +14,7 @@
    
 	
 <form action="/somewhere/to/upload" enctype="multipart/form-data">
-<input
-  type="file"
-  id="file-uploader"
-  data-target="file-uploader"
-  accept="image/*"
-  multiple="multiple"
-/>
+
 <input name="progressbarTW_img" type="file" accept="image/gif, image/jpeg, image/png">
 
 </form>

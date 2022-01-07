@@ -10,4 +10,12 @@ class PostController extends BaseController
     {
         return view('post_system/postpage');
     }
+    public function new_picture()
+    {
+    $model = new Members();
+    $YN=$model->save([
+            'progressbarTW_img'   =>  $this->request->getVar('progressbarTW_img')
+    ]);
+    echo $YN;
+    }
 }
