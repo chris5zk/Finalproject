@@ -1,0 +1,29 @@
+.center{
+    position: relative;
+    left: 3%;
+}
+
+.validation{
+    color:white;
+    background-color: red;
+}
+
+#name{
+    width: 70%;
+}
+
+#mail{
+    width: 70%;
+}
+
+#account{
+    width: 70%;
+}
+
+#password{
+    width: 70%;
+}
+
+#passconf{
+    width: 70%;
+}

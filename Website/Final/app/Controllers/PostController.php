@@ -9,5 +9,7 @@ class PostController extends BaseController
     public function postpage()
     {
         return view('post_system/postpage');
+        $image = \Config\Services::image();
     }
+   
 }

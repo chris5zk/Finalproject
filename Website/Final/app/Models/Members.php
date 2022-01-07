@@ -15,6 +15,8 @@ class Members extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'name',
+        'mail',
         'account',
         'password'
     ];

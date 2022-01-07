@@ -15,6 +15,16 @@ class Members extends Migration
                     'unsigned'      =>  TRUE,
                     'auto_increment'=>  TRUE
             ],
+            'name'   => [
+                    'type'          =>  'VARCHAR',
+                    'constraint'    =>  '20',
+                    'null'          =>  true
+            ],
+            'mail'   => [
+                    'type'          =>  'VARCHAR',
+                    'constraint'    =>  '50',
+                    'null'          =>  true
+            ],
             'account'   => [
                     'type'          =>  'VARCHAR',
                     'constraint'    =>  '20',
