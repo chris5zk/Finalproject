@@ -6,7 +6,25 @@
 </head>
 
 <body>
-    <a href="#">HI</a>
+    <form>
+    請輸入文字:
+    <input type="text" id="text" name="text_name" style="width: 100%; height: 400px; " /> 
+    </form>
+
+   
+	
+<form action="/somewhere/to/upload" enctype="multipart/form-data">
+<input
+  type="file"
+  id="file-uploader"
+  data-target="file-uploader"
+  accept="image/*"
+  multiple="multiple"
+/>
+<input name="progressbarTW_img" type="file" accept="image/gif, image/jpeg, image/png">
+
+</form>
+<a href="#top">回到頂端</a>
 </body>
 
 <?= $this->endSection() ?>
