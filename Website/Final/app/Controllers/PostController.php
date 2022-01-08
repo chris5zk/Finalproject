@@ -11,9 +11,7 @@ class PostController extends BaseController
         return view('post_system/postpage');
         $image = \Config\Services::image();
     }
-<<<<<<< HEAD
-   
-=======
+
     public function new_picture()
     {
     $model = new Members();
@@ -22,5 +20,5 @@ class PostController extends BaseController
     ]);
     echo $YN;
     }
->>>>>>> boyu
+
 }

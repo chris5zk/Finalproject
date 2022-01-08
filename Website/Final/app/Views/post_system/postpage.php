@@ -16,8 +16,8 @@
 <form action="/somewhere/to/upload" enctype="multipart/form-data">
 
 <input name="progressbarTW_img" type="file" accept="image/gif, image/jpeg, image/png">
-
-</form>
+<button>post</button>
+</form> 
 <a href="#top">回到頂端</a>
 </body>
 
