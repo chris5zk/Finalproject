@@ -21,7 +21,7 @@ class LoginController extends BaseController
 
    public function new_account()
     {
-        helper(['register']);
+        helper(['form','url']);
         $data = [];
         
         if ($this->request->getMethod() == 'post') {
@@ -70,11 +70,11 @@ class LoginController extends BaseController
 
     public function mail()
     {
+        helper(['form','url']);
         $email = \Config\Services::email();;
 
-        $email->setfrom('wzk789wzk@alum.ccu.edu.tw','CHRIS');
+        $email->setfrom('ccubombbomb@gmail.com');
         $email->setto('wzk789wzk@gmail.com');
-        $email->setCC('threeboys3323@gmail.com');
         $email->setsubject('Test');
         $email->setmessage('快點睡啦');
 

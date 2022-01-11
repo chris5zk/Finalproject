@@ -47,14 +47,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost = 'smtp.gnail.com';
+    public $SMTPHost = 'smtp.googlemail.com';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser = 'wzk789wzk@alum.ccu.edu.tw';
+    public $SMTPUser = 'ccubombbomb@gmail.com';
 
     /**
      * SMTP Password
@@ -68,14 +68,14 @@ class Email extends BaseConfig
      *
      * @var int
      */
-    public $SMTPPort = 465;
+    public $SMTPPort = 587;
 
     /**
      * SMTP Timeout (in seconds)
      *
      * @var int
      */
-    public $SMTPTimeout = 20;
+    public $SMTPTimeout = 60;
 
     /**
      * Enable persistent SMTP connections
@@ -89,7 +89,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPCrypto;
+    public $SMTPCrypto = 'tls';
 
     /**
      * Enable word-wrap
