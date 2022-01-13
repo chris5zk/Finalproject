@@ -5,26 +5,80 @@
 }
 
 .validation{
+    position: relative;
+    left: 15%;
+    right: 15%;
     color:white;
     background-color: red;
 }
 
+.validation2{
+    color:white;
+    background-color: red;
+}
+
+.button_left{
+    position: relative;
+    background-color: antiquewhite;
+    border: sienna solid 2px;
+    width: 30%;
+    height: 50px;
+    font-size: 150%;
+    left: 15%;
+    cursor: pointer;
+}
+
+.button_left:hover{
+    color:red;
+}
+
+
+.button_right{
+    position: relative;
+    background-color: antiquewhite;
+    border: sienna solid 2px;
+    width: 30%;
+    height: 50px;
+    font-size: 150%;
+    left:25%;
+    cursor: pointer;
+}
+
+.button_right:hover{
+    color:red;
+}
+
 #name{
     width: 70%;
+    height: 20px;
 }
 
 #mail{
     width: 70%;
+    height: 20px;
 }
 
 #account{
     width: 70%;
+    height: 20px;
 }
 
 #password{
     width: 70%;
+    height: 20px;
 }
 
 #passconf{
     width: 70%;
+    height: 20px;
+}
+
+#password2{
+    width: 34%;
+    height: 20px;
+}
+
+#passconf2{
+    width: 34%;
+    height: 20px;
 }

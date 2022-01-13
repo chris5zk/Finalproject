@@ -7,23 +7,21 @@
 </head>
 
 <body>
-<?php if (isset($validation)) : ?>
-        <div class="validation">
+    <?php if (isset($validation)) : ?>
+        <div class="validation2">
             <?= $validation->listErrors()?>
         </div>
     <?php endif; ?>
-    <div class="center">
+    <div>
         <form action="/LoginController/compare_account" enctype="multipart/form-data" method="post">
-            <h2>帳號:</h2>
-            <input id="account" type="text" name="account" placeholder="請輸入帳號">
+            <h2 class="center">帳號:</h2>
+            <input id="account" type="text" name="account" placeholder="請輸入帳號" class="center">
             <br>
-            <h2>密碼:</h2>
-            <input id="password" type="password" name="password" placeholder="請輸入密碼">
-            <br>
-            <h2>驗證碼:</h2>
-            <input id="valicode" type="text" name="valicode" placeholder="請輸入驗證碼">
-            
-            <button>登入</button>
+            <h2 class="center">密碼:</h2>
+            <input id="password" type="password" name="password" placeholder="請輸入密碼" class="center">
+            <br><br><br>
+            <button class="button_left">登入</button>
+            <input type="reset" value="取消" class="button_right" onclick="location.href='/PostController/homepage'">
         </form>
     </div>
 </body>

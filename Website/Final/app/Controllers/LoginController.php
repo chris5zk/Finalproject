@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Controllers;
-
+use CondeIgiter\HTTP\Response;
 use App\Controllers\BaseController;
 use App\Models\Members;
 
 class LoginController extends BaseController
 {
+    public function __construct()
+    {
+        helper(['form','url']);
+    }
+
     public function login()
     {
         return view('login_system/login');
@@ -17,6 +22,12 @@ class LoginController extends BaseController
         return view('login_system/register');
     }
 
+    public function profile()
+    {
+        return view('login_system/profile');
+    }
+
+    /*註冊帳號*/
    public function new_account()
     {
         helper(['form','url']);
@@ -26,7 +37,7 @@ class LoginController extends BaseController
                 'name'      =>  'required|max_length[20]',
                 'mail'      =>  'required|valid_email',
                 'account'   =>  'required|min_length[8]|max_length[20]',
-                'password'  =>  'required|min_length[8]|max_length[20]',
+                'password'  =>  'required|min_length[8]|max_length[100]',
                 'passconf'  =>  'required|matches[password]'
             ];
             if ($this->validate($rules)) {
@@ -66,32 +77,13 @@ class LoginController extends BaseController
                 $model->save($user);
                 echo '<script>alert("註冊成功！！！")</script>';
                 return view('post_system/homepage');
-                
-                //$_SESSION['mail'] = $_POST['mail'];
-                //return redirect('mail');
             }
             else    $data['validation'] = $this->validator;
         }
-       // return view('login_system/register',$data);
+        return view('login_system/register',$data);
     }
 
-    public function mail()
-    {
-        helper(['form','url']);
-        $email = \Config\Services::email();;
-
-        $email->setfrom('ccubombbomb@gmail.com');
-        $email->setto('wzk789wzk@gmail.com');
-        $email->setsubject('Test');
-        $email->setmessage('快點睡啦');
-
-        if ($email->send()){
-            echo 'success';
-        }else {
-            echo 'fail';
-        }
-    }
-
+    /*登入比對帳號*/ 
     public function compare_account()
     {
         $data=[];
@@ -100,7 +92,7 @@ class LoginController extends BaseController
         if($this->request->getMethod()=='post'){
             $rule = [
                 'account'   =>  'required|max_length[20]',
-                'password'  =>  'required|min_length[8]|max_length[20]|validateUser[mail,password]',
+                'password'  =>  'required|min_length[8]|max_length[100]|validateUser[mail,password]',
             ];
             $errors = [
                 'password'  =>  [
@@ -121,9 +113,11 @@ class LoginController extends BaseController
         }
     }
     
+    /*帳號資料存到伺服器端*/
     private function setUserSession($user){
         $data=[
             'id'        =>  $user['id'],
+            'name'      =>  $user['name'],
             'mail'      =>  $user['mail'],
             'account'   =>  $user['account'],
             'password'  =>  $user['password'],
@@ -133,11 +127,48 @@ class LoginController extends BaseController
         return true;
     }
 
+    /*登出*/ 
     public function logout()
     {
         session()->set('Login',false);
+        echo '<script>alert("登出成功！！")</script>';
         return view('post_system/homepage');
     }
 
+    /*個人資料修改*/
+    public function profile_edit()
+    {
+        $data = [];
+        helper(['form']);
+        $model = new Members();
+
+        if($this->request->getMethod() == 'post'){
+            $rules=[
+                'name'      =>  'required|max_length[20]'
+            ];
+            if($this->request->getPost('password') != ''){
+                $rules['password'] = 'required|min_length[8]|max_length[100]';
+                $rules['passconf'] = 'matches[password]';
+            }
+            if(!$this->validate($rules)){
+                $data['validation'] = $this->validator;
+            }
+            else{
+                $newData = [
+                    'id'        =>  session()->get('id'),
+                    'name'      =>  $this->request->getPost('name'),
+                    'account'   =>  $this->request->getPost('account'),
+                ];
+                if($this->request->getPost('password') != ''){
+                    $newData['password'] = $this->request->getPost('password');
+                }
+                $model->save($newData);
+                echo '<script>alert("更改成功!！");</script>';
+                return view('login_system/profile');
+            }
+        }
+        $data['user'] = $model->where('id',session()->get('id'))->first();
+        return view('login_system/profile',$data);
+    }
 }
 ?>

@@ -32,7 +32,7 @@ class Members extends Migration
             ],
             'password'  => [
                     'type'          =>  'VARCHAR',
-                    'constraint'    =>  '20',
+                    'constraint'    =>  '100',
                     'null'          =>  true
             ],
         ]);
