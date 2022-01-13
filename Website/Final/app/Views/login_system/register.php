@@ -2,6 +2,7 @@
 <?= $this->section('content') ?>
 
 <head>
+    <title>中正碰碰版-會員註冊</title>
     <link rel="stylesheet" href="/style/login_system.css">
 </head>
 

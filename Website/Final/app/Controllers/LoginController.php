@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-session_start();
-
 use App\Controllers\BaseController;
 use App\Models\Members;
 
@@ -22,14 +20,13 @@ class LoginController extends BaseController
    public function new_account()
     {
         helper(['form','url']);
-        $data = [];
         
         if ($this->request->getMethod() == 'post') {
             $rules = [
-                'name'      =>  'required',
+                'name'      =>  'required|max_length[20]',
                 'mail'      =>  'required|valid_email',
-                'account'   =>  'required|min_length[8]',
-                'password'  =>  'required|min_length[8]',
+                'account'   =>  'required|min_length[8]|max_length[20]',
+                'password'  =>  'required|min_length[8]|max_length[20]',
                 'passconf'  =>  'required|matches[password]'
             ];
             if ($this->validate($rules)) {
@@ -60,12 +57,22 @@ class LoginController extends BaseController
                         return view('login_system/register');
                     }
                 }
-                $_SESSION['mail'] = $_POST['mail'];
-                return redirect('mail');
+                $user=[
+                    'name'      =>  $this->request->getVar('name'),
+                    'mail'      =>  $this->request->getVar('mail'),
+                    'account'   =>  $this->request->getVar('account'),
+                    'password'  =>  $this->request->getVar('password')
+                ];
+                $model->save($user);
+                echo '<script>alert("註冊成功！！！")</script>';
+                return view('post_system/homepage');
+                
+                //$_SESSION['mail'] = $_POST['mail'];
+                //return redirect('mail');
             }
             else    $data['validation'] = $this->validator;
         }
-        return view('login_system/register',$data);
+       // return view('login_system/register',$data);
     }
 
     public function mail()
@@ -85,14 +92,52 @@ class LoginController extends BaseController
         }
     }
 
-    public function compare()
+    public function compare_account()
     {
-        $member=
-            [
-                'account'   =>  $_POST['account'],
-                'password'  =>  $_POST['password']
+        $data=[];
+        helper(['form']);
+
+        if($this->request->getMethod()=='post'){
+            $rule = [
+                'account'   =>  'required|max_length[20]',
+                'password'  =>  'required|min_length[8]|max_length[20]|validateUser[mail,password]',
             ];
-        print_r($member);
+            $errors = [
+                'password'  =>  [
+                    'validateUser'  =>  'Email or Password don\'t match'
+                ]
+            ];
+            if(!$this->validate($rule,$errors)){
+                $data['validation']=$this->validator;
+            }
+            else{
+                $model=new Members();
+                $user = $model->where('account',$this->request->getVar('account'))
+                              ->first();
+                $this->setUserSession($user);
+                return view('post_system/homepage');
+            }
+            return view('login_system/login',$data);
+        }
     }
+    
+    private function setUserSession($user){
+        $data=[
+            'id'        =>  $user['id'],
+            'mail'      =>  $user['mail'],
+            'account'   =>  $user['account'],
+            'password'  =>  $user['password'],
+            'Login'     =>  true
+        ];
+        session()->set($data);
+        return true;
+    }
+
+    public function logout()
+    {
+        session()->set('Login',false);
+        return view('post_system/homepage');
+    }
+
 }
 ?>
