@@ -96,7 +96,7 @@ class LoginController extends BaseController
             ];
             $errors = [
                 'password'  =>  [
-                    'validateUser'  =>  'Email or Password don\'t match'
+                    'validateUser'  =>  'Account or Password don\'t match'
                 ]
             ];
             if(!$this->validate($rule,$errors)){

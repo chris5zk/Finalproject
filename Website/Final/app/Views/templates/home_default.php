@@ -3,7 +3,6 @@
 <html lang="en">
 
     <head>
-        <title>中正大學碰碰版</title>
         <link rel="stylesheet" href="/style/home_default.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
