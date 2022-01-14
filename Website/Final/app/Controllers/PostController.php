@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Post;
+use ArrayObject;
 
 class PostController extends BaseController
 {
@@ -18,6 +19,11 @@ class PostController extends BaseController
             return view('login_system/login');
         endif;
         return view('post_system/postpage');
+    }
+
+    public function search()
+    {
+        return view('post_system/search');
     }
 
     public function post()
@@ -77,4 +83,25 @@ class PostController extends BaseController
         return view('post_system/postpage',$data);
     }
 
+    public function found()
+    {
+        $model = new Post();
+        $posts = $model->findAll();
+        $data = [
+            'posts' => []
+        ];
+        foreach($posts as $post)
+            if($post['car'] == $_POST['car'])
+                array_push($data['posts'],$post);
+        return view('post_system/search',$data);
+    }
+
+    public function show($post_id)
+    {
+        $model = new Post();
+        $data = [
+            'post'  =>  $model->find($post_id)
+        ];
+        return view('post_system/show',$data);
+    }
 }

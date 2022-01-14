@@ -15,7 +15,7 @@
                 <div class="list left">
                     <div id="home" class="sidebutton"><div class="insidebutton"><a class="sideword" href="/PostController/homepage">首頁</a></div></div>
                     <div class="sidebutton"><div class="insidebutton"><a class="sideword" href="/PostController/postpage">打卡</a></div></div>
-                    <div class="sidebutton"><div class="insidebutton"><a class="sideword">查詢</a></div></div>
+                    <div class="sidebutton"><div class="insidebutton"><a class="sideword" href="/PostController/search">查詢</a></div></div>
                     <?php if(session()->get('Login')): ?>        
                     <div class="sidebutton"><div class="insidebutton"><a class="sideword" href="/LoginController/profile">編輯</a></div></div>
                     <div class="sidebutton"><div class="insidebutton"><a class="sideword" href="/LoginController/logout">登出</a></div></div>
